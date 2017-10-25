@@ -14,8 +14,9 @@
 
    Run `git clone` to download the repository.
 
-   From the command line, navigate to the project's top-level directory.
-    Call `mix test` to run the [test suite](../tree/master/test), or `iex -S mix` to work with the project interactively, etc.
+   From the command line, navigate to the project's top-level directory.  
+   Call `mix test` to run the [test suite](../tree/master/test),  
+   or `iex -S mix` to work with the project interactively, etc.
 
    To add the library to your own Elixir project, add the project or the implementation
    files in /lib to your project directory, and import any modules as desired.
