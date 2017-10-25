@@ -5,7 +5,7 @@
 ## Documentation
 
   To view the HTML documentation (generated via [ExDoc](https://github.com/elixir-lang/ex_doc)), open:
-  [/graph/doc/index.html](https://github.com/Billesper/graph/tree/master/doc).
+  [/graph/doc/index.html](https://htmlpreview.github.com/?https://github.com/Billesper/graph/tree/master/doc/index.html).
 
 ## Installation
 
@@ -15,7 +15,8 @@
    Run `git clone` to download the repository.
 
    From the command line, navigate to the project's top-level directory.
-   Call `mix test` to run the [test suite](https://github.com/Billesper/graph/tree/master/test),
+   Call `mix test` to run the [test suite](../tree/master/test),
+   
    or `iex -S mix` to work with the project interactively, etc.
 
    To add the library to your own Elixir project, add the project or the implementation
