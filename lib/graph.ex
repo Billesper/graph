@@ -3,24 +3,50 @@ defmodule Graph do
   alias Graph.Node
 
   @moduledoc """
-  Documentation for Graph, a generic, functional graph library for Elixir.
+  Documentation for Graph
 
-  The API flexibly supports directed, undirected, weighted, and unweighted graphs.
+  This module implements a generic graph data structure, which is used to support 
+  the algorithms implemented in Graph.Algorithm. However, it can also serve as a general 
+  API for graph representation.
 
-  Graph implements a generic graph representation on top of Graph.Node nodes, which by default work with :id and :adjacent fields, and additionally have an optional :data field to support arbitrary data types as node data (see Graph.Node for more detail). Thus, Graph.t serves as graph data structure that can serve as the foundation for generic graph algorithms or libraries (e.g. see Graph.Algorithm). Additionaly, it can be easily adapted to specific use cases, for instance by supplying nodes with values of a problem-specific data type to Graph.Node.data.
+  Both directed and undirected graphs are supported, and in the future, 
+  functionality specific to weighted graphs will be added.
 
+  Struct fields:
 
-  The graph state is encapsulated entirely in the "nodes" field, which is a Map.t that maps node IDs to Graph.Node.t structs (see Graph.Node.t for more detail).
-  Use binaries for the keys (see: "id" field of Graph.Node) to uniquely identify specify a node in the graph. Almost all functions in Graph involve particular nodes, and thus involve ID parameter(s) which are expected to be of type binary. Wherever possible, the interface enforces that such operations use binary keys via guards, and failing to use them (e.g. by passing integers for ids) will usually result in an undefined function error.
+  * The graph state (in terms of nodes and edges) is encapsulated entirely in the 
+  "nodes" field, which is a Map.t that maps node IDs to Graph.Node.t structs 
+  (see Graph.Node.t for more detail).
 
-  The only other fields in Graph.t are the boolean flags :directed and :weighted, which as the names imply, determine the graph type. Unless otherwise specified, a new Graph.t struct is a simple graph (i.e. unweighted and undirected). To alternatively create a specific graph type, supply any desired combination of corresponding truth values for :directed and :waited upon creation. Whenever applicable, the API enforces that functions called are appropriate for the specified type of graph, e.g. you cannot add a directed edge to a Graph.t struct that has :directed set to false.
+  * The only other fields in Graph.t are the boolean flags :directed and :weighted, which as the names imply, 
+  determine the type of graph representation. Unless otherwise specified, a new Graph.t struct is a simple graph 
+  (i.e. unweighted and undirected) [note: the current implementation does not prevent a client from adding loops]. 
 
-  Note on representation of directed vs. undirected graphs: 
-  The implementation internally represents all edges as unidirectional, regardless of whether the graph is directed or not. When adding an edge to a Graph with :directed == false, the module adds . However, when checking of an undirected 
-  """  
+  To alternatively create a graph of a different type, supply any desired combination of corresponding truth values 
+  for :directed and :weighted upon creation. Whenever applicable, the API enforces that functions called are 
+  well-defined for the type of graph passed to them as an argument.
+  e.g. you cannot add a directed edge to a Graph.t struct that has :directed set to false.
 
-  @type nodeset(struct) :: Map.t(binary, Node.t(struct))
-  @type nodeset :: Map.t(binary, Node.t)
+  """
+
+  # General implementation notes:
+  
+  # Note on the representation of directed vs. undirected graphs: 
+  # The implementation internally represents all edges as unidirectional,
+  # regardless of whether the graph is directed or not. 
+  # For undirected graphs, adding/removing edges adds/removes
+  # the internal "directed" edges in both directions
+  
+  # TODO:
+  # *Update module to support weighted edges / graphs
+  # add further functionality specific to other types of graphs beyond undirected/unweighted
+  
+  @type id :: binary | integer
+  @type nodeset(struct) :: Map.t(id, Node.t(struct))
+  @type nodeset :: Map.t(id, Node.t)
+
+  # NOTE: weighted field is present here, but currently this module and
+  # others in the library do not yet support functionality specific to weighted graphs
   defstruct nodes: nil, directed: false, weighted: false
 
   @type t(struct) :: %Graph{nodes: nodeset(struct)}
@@ -28,11 +54,13 @@ defmodule Graph do
 
   #~~~CREATION~~~
   @doc """
+  Creates an unweighted, undirected graph struct, with an empty nodes map.
   """
   def new(), do: %Graph{nodes: %{}}
 
   @doc """
-  Creates a new graph struct from "nodeset", a MapSet of Node structs
+  Creates a new graph struct for an unweighted/undirected graph from "nodeset", 
+  an Enum of Node structs
   """
   def new(nodeset) do
     nodesMap = Enum.reduce(nodeset, Map.new, fn (node, acc) ->
@@ -43,10 +71,10 @@ defmodule Graph do
   
   #~~~ADDING AND REMOVING NODES~~~
   @doc """
-  Adds a node to the graph
-  Requires that a node with that id does not already exist
+  Adds a node to the graph, as long as a node with that id does not already exist
 
-  If the graph already has a node with the id passed to add_node, add_node prints an error and returns the unaltered graph.
+  If the graph already has a node with the id passed to add_node, 
+  add_node prints an error and returns the unaltered graph.
   """
   @spec add_node(Graph.t, Node.t) :: Graph.t
   def add_node(graph = %Graph{nodes: nodes}, node = %Node{id: id}) when is_binary(id) do
@@ -60,6 +88,10 @@ defmodule Graph do
   end
 
   @doc """
+  Removes the specified node from the graph, if it exists.
+  if the graph is undirected, also removes any edges connected to it
+
+  Returns the updated graph if the node exists, otherwise, nil.
   """
   @spec remove_node(Graph.t, binary) :: Graph.t
   def remove_node(graph = %Graph{directed: isDirected, nodes: nodes}, nodeID) do
@@ -86,11 +118,11 @@ defmodule Graph do
 
   To succesfully add an edge, add_edge requires that both nodes already exist in the graph.
 
+  Returns the updated graph on valid inputs.
+
   Otherwise, prints an error message
   """
-  @spec add_edge(Graph.t, binary, binary) :: Graph.t  
-  def add_edge(graph = %Graph{}, sourceNodeID, destNodeID)
-  when is_binary(sourceNodeID) and is_binary(destNodeID) do
+  def add_edge(graph = %Graph{}, sourceNodeID, destNodeID) do
     if has_node?(graph, sourceNodeID) and has_node?(graph, destNodeID) do
       _add_edge(graph, sourceNodeID, destNodeID)
     else
@@ -99,10 +131,8 @@ defmodule Graph do
     end    
   end
 
-
   # Adds an edge of the specified type to the graph when 
   # both nodes are present.
-  @spec _add_edge(Graph.t, binary, binary) :: Graph.t  
   defp _add_edge(graph = %Graph{directed: isDirected}, sourceNodeID, destNodeID) do
     #helper closure to add the edge to Graph.nodes map
     register_edge = fn (g, source, dest) ->
@@ -123,8 +153,7 @@ defmodule Graph do
     
 
   # Prints proper error ouput when at least one of the nodes in the 
-  # proposed edge does not yet exist in the graph.
- 
+  # proposed edge does not yet exist in the graph. 
   defp print_add_edge_error(graph, sourceID, destID) do
     IO.puts "Error: Cannot add edge."
         
@@ -132,18 +161,20 @@ defmodule Graph do
     print_node_dne_error(graph, destID)
   end
 
+  # Prints node DNE error output for a node when it doesn't exist 
   defp print_node_dne_error(g = %Graph{}, id) do
       if !has_node?(g, id), do: IO.puts("Node with id: <#{id}> does not exist in the graph.")    
   end
 
   @doc """
-  Returns graph with the specified directed edge removed.
+  Returns graph with the specified directed edge removed
 
   If the edge is not present, prints an error message, and returns nil.
   """
   def remove_edge(g = %Graph{directed: true}, source, dest) do
     remove_dir_edge(g, source, dest)
   end
+
   @doc """
   Returns graph with the specified undirected edge removed.
 
@@ -158,8 +189,8 @@ defmodule Graph do
     end
   end
 
-  #Removes the edge if present and returns the updated graph
-  #Note that Node.remove_adjacent/2 prints the appropriate error message if necessary.
+  # Removes the edge if present and returns the updated graph
+  # Note that Node.remove_adjacent/2 prints the appropriate error message if necessary.
   defp remove_dir_edge(g = %Graph{}, source, dest) do
     if !get_node(g, source) || !get_node(g, dest) do
       nil
@@ -171,22 +202,32 @@ defmodule Graph do
 
   #~~~OPERATIONS ON NODES~~~
   @doc """
-  Returns a map of ids to graph nodes.
+  Returns a map of ids to graph nodes
   """
   def get_nodes(%Graph{nodes: nodes}), do: nodes
 
+  @doc """
+  Returns the number of nodes in the graph
+  """
   def num_nodes(%Graph{nodes: nodes}), do: map_size(nodes)
 
+  @doc """
+  Returns the node struct for the node with the specified id, if it exists,
+  else nil
+  """
   def get_node(%Graph{nodes: nodes}, nodeID), do: nodes[nodeID]
 
+  @doc """
+  Sets the key node.id in the graph's nodes map to the given node
+  """
   def set_node(graph = %Graph{nodes: nodes}, node = %Node{}) do
-      %Graph{graph | nodes: Map.put(nodes, Node.get_id(node), node)}    
+   id = Node.get_id(node)
+   %Graph{graph | nodes: Map.put(nodes, id, node)}   
   end
 
   @doc """
   Returns true i.f.f. graph has a node with id nodeID
   """
-  @spec has_node?(Graph.t, binary) :: boolean
   def has_node?(%Graph{nodes: nodes}, nodeID), do: Map.has_key?(nodes, nodeID)
 
 end

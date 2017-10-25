@@ -5,6 +5,7 @@ defmodule Graph.Mixfile do
     [app: :graph,
      version: "0.1.0",
      elixir: "~> 1.4",
+     name: "Graph",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
      deps: deps()]
@@ -28,6 +29,9 @@ defmodule Graph.Mixfile do
   #
   # Type "mix help deps" for more examples and options
   defp deps do
-    []
+    [
+      {:ex_doc, "~> 0.16", only: :dev, runtime: false},
+      {:earmark, "~> 1.2", override: true}
+    ]
   end
 end
