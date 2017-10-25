@@ -1,0 +1,365 @@
+    <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.18.1">
+    <title>Graph.Algorithm – Graph v0.1.0</title>
+    <link rel="stylesheet" href="dist/app-c922dbe7ef.css" />
+    
+    <script src="dist/sidebar_items-3383abba47.js"></script>
+    
+    
+    
+    
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode')) document.body.className += ' night-mode'; } catch (e) { }</script>
+
+    <div class="main">
+<button class="sidebar-toggle">
+  <span class="icon-menu" aria-hidden="true"></span>
+  <span class="sr-only">Toggle Sidebar</span>
+</button>
+<section class="sidebar">
+
+  
+  <a href="api-reference.html" class="sidebar-projectLink">
+    <div class="sidebar-projectDetails">
+      <h1 class="sidebar-projectName">
+        Graph
+      </h1>
+      <h2 class="sidebar-projectVersion">
+        v0.1.0
+      </h2>
+    </div>
+    
+  </a>
+
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+    <input name="q" type="text" id="search-list" class="search-input" placeholder="search" aria-label="Search" autocomplete="off" />
+  </form>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+    
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+    
+
+    
+
+    
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+
+      <h1>
+        <small class="visible-xs">Graph v0.1.0</small>
+        Graph.Algorithm
+        
+          <a href="https://github.com/billesper/graph/blob/master/lib/graph/algorithm.ex#L1" title="View Source" class="view-source" rel="help">
+            <span class="icon-code" aria-hidden="true"></span>
+            <span class="sr-only">View Source</span>
+          </a>
+        
+      </h1>
+
+      
+        <section id="moduledoc">
+          <p>Graph.Algorithm provides general algorithms for searching graphs, 
+checking their properties, and so on.</p>
+<p>Every function takes a Graph.t struct as its first parameter.
+Additionally, many of the algorithms involve specific nodes as inputs,
+and thus take node ids in subsequent parameters.</p>
+
+        </section>
+      
+
+      
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+          
+
+          
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+    <div class="summary-row">
+  <div class="summary-signature">
+    <a href="#bfs_source/4">bfs_source(graph, sourceNodeID, goalNodeID, opts \\ [])</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>Performs a BFS search for a particular node, starting from a “source” node</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#dfs_post_order/3">dfs_post_order(graph, visitFunc, state)</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>Runs DFS on the entire graph (as opposed to just from a specific starting node), 
+visiting nodes in postorder while applying a state transition function. 
+Returns the state once every node in the graph has been visited</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#dfs_source?/3">dfs_source?(graph, sourceNodeID, goalNodeID)</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>Executes a DFS for a goal node from a specific “source” node</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#is_acyclic?/1">is_acyclic?(graph)</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>Returns true i.f.f a directed graph is acyclic</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#topological_sort/1">topological_sort(g)</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>For a directed acyclic input graph (DAG),
+returns a list of node ids representing a toplogical sort of the graph</p>
+</div>
+  
+</div>
+
+  </div>
+
+
+          
+
+        </section>
+      
+
+      
+
+      
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Functions
+          </h1>
+          <div class="detail" id="bfs_source/4">
+  
+  
+    <span id="bfs_source/3"></span>
+  
+  <div class="detail-header">
+    <a href="#bfs_source/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">bfs_source(graph, sourceNodeID, goalNodeID, opts \\ [])</span>
+    
+      <a href="https://github.com/billesper/graph/blob/master/lib/graph/algorithm.ex#L190" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+    
+    
+    
+  </div>
+  <section class="docstring">
+    <p>Performs a BFS search for a particular node, starting from a “source” node.</p>
+<p>Requires that a node with the given source id exists in the graph,
+otherwise, an ArgumentError is raised</p>
+<p>Invoke bfs_source(graph, sourceNodeID, goalNodeID) to execute a BFS that 
+begins at the source node and searches for the goal node, and returns a boolean
+value indicating whether or not the goal is reachable from the source.</p>
+<p>Optionally, provide a report_dist: true option for the last parameter,
+e.g. bfs_source(graph, source, goal, report_dist: true). 
+When report_dist: true and goal is reachable, bfs_source returns 
+a 2-tuple of the format {true, numEdges}, where numEdges is the number of 
+edges in the shortest path (in the <em>unweighted</em> sense) from the source to the goal.
+If the goal is not reachable, bfs_source always returns false on valid inputs.</p>
+
+  </section>
+</div>
+<div class="detail" id="dfs_post_order/3">
+  
+  
+  <div class="detail-header">
+    <a href="#dfs_post_order/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">dfs_post_order(graph, visitFunc, state)</span>
+    
+      <a href="https://github.com/billesper/graph/blob/master/lib/graph/algorithm.ex#L126" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+    
+    
+    
+  </div>
+  <section class="docstring">
+    <p>Runs DFS on the entire graph (as opposed to just from a specific starting node), 
+visiting nodes in postorder while applying a state transition function. 
+Returns the state once every node in the graph has been visited.</p>
+<p>Call dfs_post_order/3 like so: 
+dfs_post_order(graph, visitFunc, state)</p>
+<p>Takes parameters “state” and an anonymous state transition function “visitFunc”,
+which together are used to update the state as follows every time a node is visited:</p>
+<p>state = visitFunc.(state, node)</p>
+<p>The “state” argument passed to dfs_post_order/3 is some arbitrary initial state, 
+with the value depending on the particular application of dfs_post_order/3.</p>
+<p>To illustrate, toplogical_sort utilizes dfs_post_order/3 like so:
+top_sort = dfs_post_order(some_dag, &amp;track_reverse_post_order/2, []).</p>
+<p>The initial state is an empty list. track_reverse_post_order is captured and 
+passed as the visitFunc, which takes inputs of the current list (i.e. the “state”) 
+and current node being visited.</p>
+<p>Every time a node is visited, the following line is effectively executed:
+traversal_list = track_reverse_post_order.(traversal_list, node)</p>
+<p>track_reverse_post_order/2 prepends “node” to the front of traversal_list state, 
+and returns the new list.</p>
+<p>For a DAG, the reverse ordering of a postorder DFS traversal represents a valid 
+topological sort of the graph, so topological_sort can in turn just return the list 
+produced by this call to dfs_post_order/3. </p>
+
+  </section>
+</div>
+<div class="detail" id="dfs_source?/3">
+  
+  
+  <div class="detail-header">
+    <a href="#dfs_source?/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">dfs_source?(graph, sourceNodeID, goalNodeID)</span>
+    
+      <a href="https://github.com/billesper/graph/blob/master/lib/graph/algorithm.ex#L45" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+    
+    
+    
+  </div>
+  <section class="docstring">
+    <p>Executes a DFS for a goal node from a specific “source” node</p>
+<p>Returns a boolean value indicating whether or not the goal is reachable from 
+the starting node</p>
+<p>Raises an error if the source node does not exist in the graph</p>
+<p>Call as follows: dfs_source?(graph, sourceNodeID, goalNodeID)</p>
+
+  </section>
+</div>
+<div class="detail" id="is_acyclic?/1">
+  
+  
+  <div class="detail-header">
+    <a href="#is_acyclic?/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">is_acyclic?(graph)</span>
+    
+      <a href="https://github.com/billesper/graph/blob/master/lib/graph/algorithm.ex#L342" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+    
+    
+    
+  </div>
+  <section class="docstring">
+    <p>Returns true i.f.f a directed graph is acyclic.</p>
+<p>Call as follows: is_acyclic?(graph)</p>
+<p>This function is undefined for undirected graphs.</p>
+
+  </section>
+</div>
+<div class="detail" id="topological_sort/1">
+  
+  
+  <div class="detail-header">
+    <a href="#topological_sort/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">topological_sort(g)</span>
+    
+      <a href="https://github.com/billesper/graph/blob/master/lib/graph/algorithm.ex#L319" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+    
+    
+    
+  </div>
+  <section class="docstring">
+    <p>For a directed acyclic input graph (DAG),
+returns a list of node ids representing a toplogical sort of the graph</p>
+<p>Returns nil if input graph is not a DAG, 
+in which case topological sorting is undefined  </p>
+<p>Call as follows: topological_sort(graph)</p>
+<p>Note that, in general, a DAG may have multiple valid topological sorts.
+topological_sort/1 returns one of them.
+If there are multiple valid sorts, there is no guarantee as to which particular 
+one is returned.</p>
+
+  </section>
+</div>
+
+        </section>
+      
+
+      
+          <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" rel="help" target="_blank">ExDoc</a> (v0.18.1),
+          </span>
+          <span class="line">
+            designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+            </span>
+        </p>
+        <button class="night-mode-toggle"><span class="sr-only">Switch theme</span></button>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  <script src="dist/app-778c9ef903.js"></script>
+  
+  
+  
+  
+  </body>
+</html>
+

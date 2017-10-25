@@ -1,0 +1,737 @@
+    <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.18.1">
+    <title>Graph – Graph v0.1.0</title>
+    <link rel="stylesheet" href="dist/app-c922dbe7ef.css" />
+    
+    <script src="dist/sidebar_items-3383abba47.js"></script>
+    
+    
+    
+    
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode')) document.body.className += ' night-mode'; } catch (e) { }</script>
+
+    <div class="main">
+<button class="sidebar-toggle">
+  <span class="icon-menu" aria-hidden="true"></span>
+  <span class="sr-only">Toggle Sidebar</span>
+</button>
+<section class="sidebar">
+
+  
+  <a href="api-reference.html" class="sidebar-projectLink">
+    <div class="sidebar-projectDetails">
+      <h1 class="sidebar-projectName">
+        Graph
+      </h1>
+      <h2 class="sidebar-projectVersion">
+        v0.1.0
+      </h2>
+    </div>
+    
+  </a>
+
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+    <input name="q" type="text" id="search-list" class="search-input" placeholder="search" aria-label="Search" autocomplete="off" />
+  </form>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+    
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+    
+
+    
+
+    
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+
+      <h1>
+        <small class="visible-xs">Graph v0.1.0</small>
+        Graph
+        
+          <a href="https://github.com/billesper/graph/blob/master/lib/graph.ex#L1" title="View Source" class="view-source" rel="help">
+            <span class="icon-code" aria-hidden="true"></span>
+            <span class="sr-only">View Source</span>
+          </a>
+        
+      </h1>
+
+      
+        <section id="moduledoc">
+          <p>Documentation for Graph</p>
+<p>This module implements a generic graph data structure, which is used to support 
+the algorithms implemented in Graph.Algorithm. However, it can also serve as a general 
+API for graph representation.</p>
+<p>Both directed and undirected graphs are supported, and in the future, 
+functionality specific to weighted graphs will be added.</p>
+<p>Struct fields:</p>
+<ul>
+<li><p>The graph state (in terms of nodes and edges) is encapsulated entirely in the 
+“nodes” field, which is a Map.t that maps node IDs to Graph.Node.t structs 
+(see Graph.Node.t for more detail).</p>
+</li>
+<li><p>The only other fields in Graph.t are the boolean flags :directed and :weighted, which as the names imply, 
+determine the type of graph representation. Unless otherwise specified, a new Graph.t struct is a simple graph 
+(i.e. unweighted and undirected) [note: the current implementation does not prevent a client from adding loops]. </p>
+</li>
+</ul>
+<p>To alternatively create a graph of a different type, supply any desired combination of corresponding truth values 
+for :directed and :weighted upon creation. Whenever applicable, the API enforces that functions called are 
+well-defined for the type of graph passed to them as an argument.
+e.g. you cannot add a directed edge to a Graph.t struct that has :directed set to false.</p>
+
+        </section>
+      
+
+      
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+          
+  <div class="summary-types summary">
+    <h2>
+      <a href="#types">Types</a>
+    </h2>
+    <div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:id/0">id()</a>
+  </div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:nodesmap/0">nodesmap()</a>
+  </div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:nodesmap/1">nodesmap(struct)</a>
+  </div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:t/0">t()</a>
+  </div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:t/1">t(struct)</a>
+  </div>
+  
+</div>
+
+  </div>
+
+
+          
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+    <div class="summary-row">
+  <div class="summary-signature">
+    <a href="#add_edge/3">add_edge(graph, sourceNodeID, destNodeID)</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>Adds an edge to the graph</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#add_node/2">add_node(graph, node)</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>Adds a node to the graph, as long as a node with that id does not already exist</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_node/2">get_node(graph, nodeID)</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>Returns the node struct for the node with the specified id, if it exists,
+else nil</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_nodes/1">get_nodes(graph)</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>Returns a map of ids to graph nodes</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#has_node?/2">has_node?(graph, nodeID)</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>Returns true i.f.f. graph has a node with id nodeID</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#new/0">new()</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>Creates an unweighted, undirected graph struct, with an empty nodes map</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#new/1">new(nodeset)</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>Creates a new graph struct for an unweighted/undirected graph from “nodeset”, 
+an Enum of Node structs</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#num_nodes/1">num_nodes(graph)</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>Returns the number of nodes in the graph</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#remove_edge/3">remove_edge(g, source, dest)</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>Returns graph with the specified undirected edge removed</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#remove_node/2">remove_node(graph, nodeID)</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>Removes the specified node from the graph, if it exists.
+if the graph is undirected, also removes any edges connected to it</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#set_node/2">set_node(graph, node)</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>Sets the key node.id in the graph’s nodes map to the given node</p>
+</div>
+  
+</div>
+
+  </div>
+
+
+          
+
+        </section>
+      
+
+      
+        <section id="types" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#types">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Types
+          </h1>
+          <div class="types-list">
+            <div class="detail" id="t:id/0">
+  
+  
+  <div class="detail-header">
+    <a href="#t:id/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <span class="signature">id()</span>
+    
+      <a href="https://github.com/billesper/graph/blob/master/lib/graph.ex#L44" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+    
+    
+    
+      <div class="specs">
+        
+          <pre>id() :: binary() | integer()</pre>
+        
+      </div>
+    
+  </div>
+  <section class="docstring">
+    
+  </section>
+</div>
+<div class="detail" id="t:nodesmap/0">
+  
+  
+  <div class="detail-header">
+    <a href="#t:nodesmap/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <span class="signature">nodesmap()</span>
+    
+      <a href="https://github.com/billesper/graph/blob/master/lib/graph.ex#L46" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+    
+    
+    
+      <div class="specs">
+        
+          <pre>nodesmap() :: <a href="https://hexdocs.pm/elixir/Map.html#t:t/2">Map.t</a>(<a href="#t:id/0">id</a>(), <a href="Graph.Node.html#t:t/0">Graph.Node.t</a>())</pre>
+        
+      </div>
+    
+  </div>
+  <section class="docstring">
+    
+  </section>
+</div>
+<div class="detail" id="t:nodesmap/1">
+  
+  
+  <div class="detail-header">
+    <a href="#t:nodesmap/1" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <span class="signature">nodesmap(struct)</span>
+    
+      <a href="https://github.com/billesper/graph/blob/master/lib/graph.ex#L45" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+    
+    
+    
+      <div class="specs">
+        
+          <pre>nodesmap(struct) :: <a href="https://hexdocs.pm/elixir/Map.html#t:t/2">Map.t</a>(<a href="#t:id/0">id</a>(), <a href="Graph.Node.html#t:t/1">Graph.Node.t</a>(struct))</pre>
+        
+      </div>
+    
+  </div>
+  <section class="docstring">
+    
+  </section>
+</div>
+<div class="detail" id="t:t/0">
+  
+  
+  <div class="detail-header">
+    <a href="#t:t/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <span class="signature">t()</span>
+    
+      <a href="https://github.com/billesper/graph/blob/master/lib/graph.ex#L53" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+    
+    
+    
+      <div class="specs">
+        
+          <pre>t() :: %Graph{directed: term(), nodes: <a href="#t:nodesmap/0">nodesmap</a>(), weighted: term()}</pre>
+        
+      </div>
+    
+  </div>
+  <section class="docstring">
+    
+  </section>
+</div>
+<div class="detail" id="t:t/1">
+  
+  
+  <div class="detail-header">
+    <a href="#t:t/1" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <span class="signature">t(struct)</span>
+    
+      <a href="https://github.com/billesper/graph/blob/master/lib/graph.ex#L52" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+    
+    
+    
+      <div class="specs">
+        
+          <pre>t(struct) :: %Graph{directed: term(), nodes: <a href="#t:nodesmap/1">nodesmap</a>(struct), weighted: term()}</pre>
+        
+      </div>
+    
+  </div>
+  <section class="docstring">
+    
+  </section>
+</div>
+
+          </div>
+        </section>
+      
+
+      
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Functions
+          </h1>
+          <div class="detail" id="add_edge/3">
+  
+  
+  <div class="detail-header">
+    <a href="#add_edge/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">add_edge(graph, sourceNodeID, destNodeID)</span>
+    
+      <a href="https://github.com/billesper/graph/blob/master/lib/graph.ex#L125" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+    
+    
+    
+  </div>
+  <section class="docstring">
+    <p>Adds an edge to the graph</p>
+<p>To succesfully add an edge, add_edge requires that both nodes already exist in the graph.</p>
+<p>When the inputs are valid, returns the updated graph</p>
+<p>Otherwise, prints an error message</p>
+
+  </section>
+</div>
+<div class="detail" id="add_node/2">
+  
+  
+  <div class="detail-header">
+    <a href="#add_node/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">add_node(graph, node)</span>
+    
+      <a href="https://github.com/billesper/graph/blob/master/lib/graph.ex#L80" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+    
+    
+    
+      <div class="specs">
+        
+          <pre>add_node(<a href="Graph.html#t:t/0">Graph.t</a>(), <a href="Graph.Node.html#t:t/0">Graph.Node.t</a>()) :: <a href="Graph.html#t:t/0">Graph.t</a>()</pre>
+        
+      </div>
+    
+  </div>
+  <section class="docstring">
+    <p>Adds a node to the graph, as long as a node with that id does not already exist</p>
+<p>If the graph already has a node with the id passed to add_node, 
+add_node prints an error and returns the unaltered graph.</p>
+
+  </section>
+</div>
+<div class="detail" id="get_node/2">
+  
+  
+  <div class="detail-header">
+    <a href="#get_node/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">get_node(graph, nodeID)</span>
+    
+      <a href="https://github.com/billesper/graph/blob/master/lib/graph.ex#L218" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+    
+    
+    
+  </div>
+  <section class="docstring">
+    <p>Returns the node struct for the node with the specified id, if it exists,
+else nil</p>
+
+  </section>
+</div>
+<div class="detail" id="get_nodes/1">
+  
+  
+  <div class="detail-header">
+    <a href="#get_nodes/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">get_nodes(graph)</span>
+    
+      <a href="https://github.com/billesper/graph/blob/master/lib/graph.ex#L207" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+    
+    
+    
+  </div>
+  <section class="docstring">
+    <p>Returns a map of ids to graph nodes</p>
+
+  </section>
+</div>
+<div class="detail" id="has_node?/2">
+  
+  
+  <div class="detail-header">
+    <a href="#has_node?/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">has_node?(graph, nodeID)</span>
+    
+      <a href="https://github.com/billesper/graph/blob/master/lib/graph.ex#L231" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+    
+    
+    
+  </div>
+  <section class="docstring">
+    <p>Returns true i.f.f. graph has a node with id nodeID</p>
+
+  </section>
+</div>
+<div class="detail" id="new/0">
+  
+  
+  <div class="detail-header">
+    <a href="#new/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">new()</span>
+    
+      <a href="https://github.com/billesper/graph/blob/master/lib/graph.ex#L59" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+    
+    
+    
+  </div>
+  <section class="docstring">
+    <p>Creates an unweighted, undirected graph struct, with an empty nodes map.</p>
+
+  </section>
+</div>
+<div class="detail" id="new/1">
+  
+  
+  <div class="detail-header">
+    <a href="#new/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">new(nodeset)</span>
+    
+      <a href="https://github.com/billesper/graph/blob/master/lib/graph.ex#L65" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+    
+    
+    
+  </div>
+  <section class="docstring">
+    <p>Creates a new graph struct for an unweighted/undirected graph from “nodeset”, 
+an Enum of Node structs</p>
+
+  </section>
+</div>
+<div class="detail" id="num_nodes/1">
+  
+  
+  <div class="detail-header">
+    <a href="#num_nodes/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">num_nodes(graph)</span>
+    
+      <a href="https://github.com/billesper/graph/blob/master/lib/graph.ex#L212" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+    
+    
+    
+  </div>
+  <section class="docstring">
+    <p>Returns the number of nodes in the graph</p>
+
+  </section>
+</div>
+<div class="detail" id="remove_edge/3">
+  
+  
+  <div class="detail-header">
+    <a href="#remove_edge/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">remove_edge(g, source, dest)</span>
+    
+      <a href="https://github.com/billesper/graph/blob/master/lib/graph.ex#L183" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+    
+    
+    
+  </div>
+  <section class="docstring">
+    <p>Returns graph with the specified undirected edge removed.</p>
+<p>If the edge is not present, prints an error message, and returns nil.</p>
+
+  </section>
+</div>
+<div class="detail" id="remove_node/2">
+  
+  
+  <div class="detail-header">
+    <a href="#remove_node/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">remove_node(graph, nodeID)</span>
+    
+      <a href="https://github.com/billesper/graph/blob/master/lib/graph.ex#L97" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+    
+    
+    
+      <div class="specs">
+        
+          <pre>remove_node(<a href="Graph.html#t:t/0">Graph.t</a>(), binary()) :: <a href="Graph.html#t:t/0">Graph.t</a>()</pre>
+        
+      </div>
+    
+  </div>
+  <section class="docstring">
+    <p>Removes the specified node from the graph, if it exists.
+if the graph is undirected, also removes any edges connected to it</p>
+<p>Returns the updated graph if the node exists, otherwise, nil.</p>
+
+  </section>
+</div>
+<div class="detail" id="set_node/2">
+  
+  
+  <div class="detail-header">
+    <a href="#set_node/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">set_node(graph, node)</span>
+    
+      <a href="https://github.com/billesper/graph/blob/master/lib/graph.ex#L223" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+    
+    
+    
+  </div>
+  <section class="docstring">
+    <p>Sets the key node.id in the graph’s nodes map to the given node</p>
+
+  </section>
+</div>
+
+        </section>
+      
+
+      
+          <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" rel="help" target="_blank">ExDoc</a> (v0.18.1),
+          </span>
+          <span class="line">
+            designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+            </span>
+        </p>
+        <button class="night-mode-toggle"><span class="sr-only">Switch theme</span></button>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  <script src="dist/app-778c9ef903.js"></script>
+  
+  
+  
+  
+  </body>
+</html>
+

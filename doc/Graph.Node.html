@@ -1,0 +1,615 @@
+    <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.18.1">
+    <title>Graph.Node – Graph v0.1.0</title>
+    <link rel="stylesheet" href="dist/app-c922dbe7ef.css" />
+    
+    <script src="dist/sidebar_items-3383abba47.js"></script>
+    
+    
+    
+    
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode')) document.body.className += ' night-mode'; } catch (e) { }</script>
+
+    <div class="main">
+<button class="sidebar-toggle">
+  <span class="icon-menu" aria-hidden="true"></span>
+  <span class="sr-only">Toggle Sidebar</span>
+</button>
+<section class="sidebar">
+
+  
+  <a href="api-reference.html" class="sidebar-projectLink">
+    <div class="sidebar-projectDetails">
+      <h1 class="sidebar-projectName">
+        Graph
+      </h1>
+      <h2 class="sidebar-projectVersion">
+        v0.1.0
+      </h2>
+    </div>
+    
+  </a>
+
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+    <input name="q" type="text" id="search-list" class="search-input" placeholder="search" aria-label="Search" autocomplete="off" />
+  </form>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+    
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+    
+
+    
+
+    
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+
+      <h1>
+        <small class="visible-xs">Graph v0.1.0</small>
+        Graph.Node
+        
+          <a href="https://github.com/billesper/graph/blob/master/lib/graph/node.ex#L1" title="View Source" class="view-source" rel="help">
+            <span class="icon-code" aria-hidden="true"></span>
+            <span class="sr-only">View Source</span>
+          </a>
+        
+      </h1>
+
+      
+        <section id="moduledoc">
+          <p>Documentation for Graph.Node.</p>
+<p>Graph.Node implements a struct to hold the state of a graph node.
+The Graph module builds on Graph.Node to represent graphs out of 
+Node.t structs.</p>
+<p>Struct fields:
+The “id” (generally a binary or an integer) field uniquely identifies 
+a node stored a Graph.t struct.</p>
+<p>The “adjacent” field is a MapSet.t of ids of nodes that are adjacent to the
+node represented by the struct. An id in the adjacent set always represents 
+a directed edge from the node to the adjacent node, regardless of whether the
+graph is directed or undirected (see the Graph module for more info).
+Conceptually, this represents a node’s adjacency list.</p>
+<p>The “data” associates some arbitrary data with the node. Thus, the type of value
+stored in this field can be chosen to suit whatever purpose the node/graph is applied to.</p>
+<p>The Node.t struct fields are considered private; 
+do not access them directly, but rather use the interface functions provided.</p>
+
+        </section>
+      
+
+      
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+          
+  <div class="summary-types summary">
+    <h2>
+      <a href="#types">Types</a>
+    </h2>
+    <div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:adjacency_list/0">adjacency_list()</a>
+  </div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:id/0">id()</a>
+  </div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:t/0">t()</a>
+  </div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:t/1">t(struct)</a>
+  </div>
+  
+</div>
+
+  </div>
+
+
+          
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+    <div class="summary-row">
+  <div class="summary-signature">
+    <a href="#add_adjacent/2">add_adjacent(node, adjNodeID)</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>Adds a node id to a node’s adjacency list, and returns the updated node</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_data/1">get_data(node)</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>Returns the value of the node’s data field</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_id/1">get_id(node)</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>Returns the id of a node</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#has_adj_node?/2">has_adj_node?(node, adjNodeID)</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>Returns a boolean value indicating whether or not the node has the 
+specified node id in its adjacency list</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#new/1">new(id)</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>Returns a new Node struct with id</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#new/2">new(id, data)</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>Returns a new Node struct with id and data</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#remove_adjacent/2">remove_adjacent(node, adjNodeID)</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>Removes specified adjacent node from a node’s adjacency list, and returns the
+updated node</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#set_data/2">set_data(node, data)</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>Sets the node’s data field to the specified value and returns the modified node</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#set_id/2">set_id(node, id)</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>Sets the id of a node to the specified id, returning the updated node</p>
+</div>
+  
+</div>
+
+  </div>
+
+
+          
+
+        </section>
+      
+
+      
+        <section id="types" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#types">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Types
+          </h1>
+          <div class="types-list">
+            <div class="detail" id="t:adjacency_list/0">
+  
+  
+  <div class="detail-header">
+    <a href="#t:adjacency_list/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <span class="signature">adjacency_list()</span>
+    
+      <a href="https://github.com/billesper/graph/blob/master/lib/graph/node.ex#L41" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+    
+    
+    
+      <div class="specs">
+        
+          <pre>adjacency_list() :: <a href="https://hexdocs.pm/elixir/MapSet.html#t:t/1">MapSet.t</a>(<a href="#t:id/0">id</a>())</pre>
+        
+      </div>
+    
+  </div>
+  <section class="docstring">
+    
+  </section>
+</div>
+<div class="detail" id="t:id/0">
+  
+  
+  <div class="detail-header">
+    <a href="#t:id/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <span class="signature">id()</span>
+    
+      <a href="https://github.com/billesper/graph/blob/master/lib/graph/node.ex#L40" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+    
+    
+    
+      <div class="specs">
+        
+          <pre>id() :: binary() | integer()</pre>
+        
+      </div>
+    
+  </div>
+  <section class="docstring">
+    
+  </section>
+</div>
+<div class="detail" id="t:t/0">
+  
+  
+  <div class="detail-header">
+    <a href="#t:t/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <span class="signature">t()</span>
+    
+      <a href="https://github.com/billesper/graph/blob/master/lib/graph/node.ex#L42" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+    
+    
+    
+      <div class="specs">
+        
+          <pre>t() :: %Graph.Node{adjacent: <a href="#t:adjacency_list/0">adjacency_list</a>(), data: term(), id: <a href="#t:id/0">id</a>()}</pre>
+        
+      </div>
+    
+  </div>
+  <section class="docstring">
+    
+  </section>
+</div>
+<div class="detail" id="t:t/1">
+  
+  
+  <div class="detail-header">
+    <a href="#t:t/1" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <span class="signature">t(struct)</span>
+    
+      <a href="https://github.com/billesper/graph/blob/master/lib/graph/node.ex#L43" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+    
+    
+    
+      <div class="specs">
+        
+          <pre>t(struct) :: %Graph.Node{adjacent: <a href="#t:adjacency_list/0">adjacency_list</a>(), data: struct, id: <a href="#t:id/0">id</a>()}</pre>
+        
+      </div>
+    
+  </div>
+  <section class="docstring">
+    
+  </section>
+</div>
+
+          </div>
+        </section>
+      
+
+      
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Functions
+          </h1>
+          <div class="detail" id="add_adjacent/2">
+  
+  
+  <div class="detail-header">
+    <a href="#add_adjacent/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">add_adjacent(node, adjNodeID)</span>
+    
+      <a href="https://github.com/billesper/graph/blob/master/lib/graph/node.ex#L86" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+    
+    
+    
+  </div>
+  <section class="docstring">
+    <p>Adds a node id to a node’s adjacency list, and returns the updated node.</p>
+
+  </section>
+</div>
+<div class="detail" id="get_data/1">
+  
+  
+  <div class="detail-header">
+    <a href="#get_data/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">get_data(node)</span>
+    
+      <a href="https://github.com/billesper/graph/blob/master/lib/graph/node.ex#L81" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+    
+    
+    
+  </div>
+  <section class="docstring">
+    <p>Returns the value of the node’s data field.</p>
+
+  </section>
+</div>
+<div class="detail" id="get_id/1">
+  
+  
+  <div class="detail-header">
+    <a href="#get_id/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">get_id(node)</span>
+    
+      <a href="https://github.com/billesper/graph/blob/master/lib/graph/node.ex#L69" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+    
+    
+    
+  </div>
+  <section class="docstring">
+    <p>Returns the id of a node.</p>
+
+  </section>
+</div>
+<div class="detail" id="has_adj_node?/2">
+  
+  
+  <div class="detail-header">
+    <a href="#has_adj_node?/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">has_adj_node?(node, adjNodeID)</span>
+    
+      <a href="https://github.com/billesper/graph/blob/master/lib/graph/node.ex#L111" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+    
+    
+    
+  </div>
+  <section class="docstring">
+    <p>Returns a boolean value indicating whether or not the node has the 
+specified node id in its adjacency list.</p>
+
+  </section>
+</div>
+<div class="detail" id="new/1">
+  
+  
+  <div class="detail-header">
+    <a href="#new/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">new(id)</span>
+    
+      <a href="https://github.com/billesper/graph/blob/master/lib/graph/node.ex#L48" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+    
+    
+    
+  </div>
+  <section class="docstring">
+    <p>Returns a new Node struct with id.  </p>
+
+  </section>
+</div>
+<div class="detail" id="new/2">
+  
+  
+  <div class="detail-header">
+    <a href="#new/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">new(id, data)</span>
+    
+      <a href="https://github.com/billesper/graph/blob/master/lib/graph/node.ex#L53" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+    
+    
+    
+  </div>
+  <section class="docstring">
+    <p>Returns a new Node struct with id and data.</p>
+
+  </section>
+</div>
+<div class="detail" id="remove_adjacent/2">
+  
+  
+  <div class="detail-header">
+    <a href="#remove_adjacent/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">remove_adjacent(node, adjNodeID)</span>
+    
+      <a href="https://github.com/billesper/graph/blob/master/lib/graph/node.ex#L97" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+    
+    
+    
+  </div>
+  <section class="docstring">
+    <p>Removes specified adjacent node from a node’s adjacency list, and returns the
+updated node.</p>
+<p>If the specified adjacent node is not in the node’s adjacency list, 
+prints an error message and returns nil.</p>
+
+  </section>
+</div>
+<div class="detail" id="set_data/2">
+  
+  
+  <div class="detail-header">
+    <a href="#set_data/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">set_data(node, data)</span>
+    
+      <a href="https://github.com/billesper/graph/blob/master/lib/graph/node.ex#L74" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+    
+    
+    
+  </div>
+  <section class="docstring">
+    <p>Sets the node’s data field to the specified value and returns the modified node.</p>
+
+  </section>
+</div>
+<div class="detail" id="set_id/2">
+  
+  
+  <div class="detail-header">
+    <a href="#set_id/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">set_id(node, id)</span>
+    
+      <a href="https://github.com/billesper/graph/blob/master/lib/graph/node.ex#L64" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+    
+    
+    
+  </div>
+  <section class="docstring">
+    <p>Sets the id of a node to the specified id, returning the updated node.</p>
+
+  </section>
+</div>
+
+        </section>
+      
+
+      
+          <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" rel="help" target="_blank">ExDoc</a> (v0.18.1),
+          </span>
+          <span class="line">
+            designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+            </span>
+        </p>
+        <button class="night-mode-toggle"><span class="sr-only">Switch theme</span></button>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  <script src="dist/app-778c9ef903.js"></script>
+  
+  
+  
+  
+  </body>
+</html>
+

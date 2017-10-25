@@ -5,7 +5,7 @@
 ## Documentation
 
   To view the HTML documentation (generated via [ExDoc](https://github.com/elixir-lang/ex_doc)), open:
-  [graph/doc/index.html](https://github.com/billesper/graph/doc/index.html).
+  [/graph/doc/index.html](https://github.com/billesper/graph/doc/index.html).
 
 ## Installation
 
@@ -14,8 +14,8 @@
 
    Run `git clone` to download the repository.
 
-   From the command line, navigate to the project's top-level directory. Call `mix test` to run the
-   test suite,
+   From the command line, navigate to the project's top-level directory.
+   Call `mix test` to run the [test suite](https://github.com/Billesper/graph/tree/master/test),
    or `iex -S mix` to work with the project interactively, etc.
 
    To add the library to your own Elixir project, add the project or the implementation
@@ -63,5 +63,5 @@
    * Expand library of algorithms
    * Add more support for weighted graphs
    * Add a [behaviour](https://elixir-lang.org/getting-started/typespecs-and-behaviours.html) for classical AI algorithms
-    on graphs, such as A*, bidrectional search, and others.
+    on graphs, such as A*, bidrectional search, etc.
    
