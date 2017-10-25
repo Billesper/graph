@@ -12,7 +12,7 @@
    Make sure the latest versions of Elixir and Erlang are installed on your machine (for detailed
    instructions, see https://elixir-lang.org/install.html).
 
-   Run `$ git clone` to download the repository.
+   Run `$ git clone <repo URL>` to download the repository.
 
    From the command line, navigate to the project's top-level directory.  
    Call: `$ mix test` to run the [test suite](../master/test), or `$ iex -S mix` to work with the project interactively, etc.
