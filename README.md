@@ -12,14 +12,10 @@
    Make sure the latest versions of Elixir and Erlang are installed on your machine (for detailed
    instructions, see https://elixir-lang.org/install.html).
 
-   Run `git clone` to download the repository.
+   Run `$ git clone` to download the repository.
 
    From the command line, navigate to the project's top-level directory.  
-   Call:
-   ```$ mix test```
-   to run the [test suite](../tree/master/test), or
-   ```$ iex -S mix```
-   to work with the project interactively, etc.
+   Call: `$ mix test` to run the [test suite](../master/test), or `$ iex -S mix` to work with the project interactively, etc.
 
    To add the library to your own Elixir project, add the project or the implementation
    files in /lib to your project directory, and import any modules as desired.
@@ -41,7 +37,7 @@
    } 
    ```
    
-   #### 2) Graph.Algorithm - collection of graph algorithms
+   #### 2) Graph.Algorithm: collection of graph algorithms
    ```
    # BFS/DFS from some source node
    iex> sourceNodeID = "3"
