@@ -15,15 +15,16 @@
    Run `git clone` to download the repository.
 
    From the command line, navigate to the project's top-level directory. Call `mix test` to run the
-   test suite, or `iex -S mix` to work with the project interactively, etc.
+   test suite,
+   or `iex -S mix` to work with the project interactively, etc.
 
    To add the library to your own Elixir project, add the project or the implementation
    files in /lib to your project directory, and import any modules as desired.
    
 ## Simple Example Usage 
 
-   ### 1) Graph - functional data structure for graph representation
-   
+   #### 1) Graph: functional data structure for graph representation
+   ```
    iex> graph = Graph.new()
    %Graph{directed: false, nodes: %{}, weighted: false}
    iex> nyc = %Node{id: "0", data: "New York", adjacent: MapSet.new()}
@@ -35,8 +36,9 @@
    "0" => %Node{id: "0", data: "New York", adjacent: #MapSet<["1"]>}
    "1" => %Node{id: "1", data: "San Francisco", adjacent: #MapSet<["0"]>}}
    } 
-
-   ### 2) Graph.Algorithm - collection of graph algorithms
+   ```
+   
+   #### 2) Graph.Algorithm - collection of graph algorithms
    ```
    # BFS/DFS from some source node
    iex> sourceNodeID = "3"
@@ -58,8 +60,8 @@
    ```
    
 ## Future TODO:
-   *Expand library of algorithms
-   *Add more support for weighted graphs
-   *Add a [behaviour](https://elixir-lang.org/getting-started/typespecs-and-behaviours.html) for classical AI algorithms
+   * Expand library of algorithms
+   * Add more support for weighted graphs
+   * Add a [behaviour](https://elixir-lang.org/getting-started/typespecs-and-behaviours.html) for classical AI algorithms
     on graphs, such as A*, bidrectional search, and others.
    
