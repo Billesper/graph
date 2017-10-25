@@ -5,7 +5,7 @@
 ## Documentation
 
   To view the HTML documentation (generated via [ExDoc](https://github.com/elixir-lang/ex_doc)), open:
-  [/graph/doc/index.html](https://rawgit.com/Billesper/graph/blob//master/doc/index.html).
+  [/graph/doc/index.html](https://cdn.rawgit.com/Billesper/graph/66203411/doc/index.html).
 
 ## Installation
 
