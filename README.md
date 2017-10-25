@@ -15,8 +15,11 @@
    Run `git clone` to download the repository.
 
    From the command line, navigate to the project's top-level directory.  
-   Call `mix test` to run the [test suite](../tree/master/test),  
-   or `iex -S mix` to work with the project interactively, etc.
+   Call:
+   ```$ mix test```
+   to run the [test suite](../tree/master/test), or
+   ```$ iex -S mix```
+   to work with the project interactively, etc.
 
    To add the library to your own Elixir project, add the project or the implementation
    files in /lib to your project directory, and import any modules as desired.
@@ -48,15 +51,15 @@
    true
    iex> Graph.Algorithm.bfs_source(graph, sourceNodeID, goalNodeID)
    true
-   # if graph is undirected and the shortest path from node "3" to "5" is 4 edges:
+   # if graph is undirected and the shortest path from node "3" to "5" is 4 edges long:
    iex> Graph.Algorithm.bfs_source(graph, sourceNodeID, goalNodeID, report_dist: true)
    {true, 4}
 
    # topological sorting
    # suppose baking_dag is an acyclic directed graph representing steps in a cake baking process,
    iex> Graph.Algorithm.topological_sort(baking_dag)
-   ["get bowl", "get ingredients", "get pan", "mix ingredients in bowl",
-   "add mixed ingredients to pan", "heat oven", "bake cake"]
+   ["get bowl", "get ingredients", "get pan", "mix ingredients in bowl", "heat oven",
+   "add mixed ingredients to pan", "put pan in oven and bake cake"]
    ```
    
 ## Future TODO:
