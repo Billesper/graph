@@ -42,15 +42,15 @@ defmodule Graph do
   # add further functionality specific to other types of graphs beyond undirected/unweighted
   
   @type id :: binary | integer
-  @type nodeset(struct) :: Map.t(id, Node.t(struct))
-  @type nodeset :: Map.t(id, Node.t)
+  @type nodesmap(struct) :: Map.t(id, Node.t(struct))
+  @type nodesmap :: Map.t(id, Node.t)
 
   # NOTE: weighted field is present here, but currently this module and
   # others in the library do not yet support functionality specific to weighted graphs
   defstruct nodes: nil, directed: false, weighted: false
 
-  @type t(struct) :: %Graph{nodes: nodeset(struct)}
-  @type t :: %Graph{nodes: nodeset}
+  @type t(struct) :: %Graph{nodes: nodesmap(struct)}
+  @type t :: %Graph{nodes: nodesmap}
 
   #~~~CREATION~~~
   @doc """
@@ -114,11 +114,11 @@ defmodule Graph do
 
   #~~~ADDING AND REMOVING EDGES~~~  
   @doc """
-  Public interface for adding an edge
+  Adds an edge to the graph
 
   To succesfully add an edge, add_edge requires that both nodes already exist in the graph.
 
-  Returns the updated graph on valid inputs.
+  When the inputs are valid, returns the updated graph
 
   Otherwise, prints an error message
   """

@@ -50,7 +50,7 @@ defmodule Graph.Algorithm do
     #maintain both a visited set to actually perform the algorithm,
     #and a list that records the (reverse) order in which nodes are visited
     #the *list* is currently unused, but will be utilized in the future
-    {foundGoal, visited} = dfs_source_visit(graph, sourceNodeID, goalNodeID, [set: MapSet.new, list: []])
+    {foundGoal, _visited} = dfs_source_visit(graph, sourceNodeID, goalNodeID, [set: MapSet.new, list: []])
     foundGoal
   end
 
@@ -313,7 +313,7 @@ defmodule Graph.Algorithm do
 
   Note that, in general, a DAG may have multiple valid topological sorts.
   topological_sort/1 returns one of them.
-  if there are multiple valid sorts, there is no guarantee as to which particular 
+  If there are multiple valid sorts, there is no guarantee as to which particular 
   one is returned.
   """
   def topological_sort(g = %Graph{directed: isDirected}) do
@@ -372,7 +372,7 @@ defmodule Graph.Algorithm do
           
   end
 
-  # base case: by the point, every node in the graph has been visited by DFS,
+  # base case: by this point, every node in the graph has been visited by DFS,
   # and no cycles have been found, so return true.
   defp is_acyclic?(_g = %Graph{directed: true}, [], _addAncestor, _search_ancestors, _visited), do: true  
 
